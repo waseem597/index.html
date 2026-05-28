@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>מסעדת אלנבי - Allenby Restaurant</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,9 +15,14 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Rubik', 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: #333;
+        }
+
+        body.en {
+            direction: ltr;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         .language-toggle {
@@ -24,24 +32,17 @@
             z-index: 1000;
             background: #d4a574;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
             color: white;
             transition: background 0.3s;
+            font-size: 0.9em;
         }
 
         .language-toggle:hover {
             background: #c09464;
-        }
-
-        body.en {
-            direction: ltr;
-        }
-
-        body.en * {
-            font-family: 'Arial', sans-serif;
         }
 
         /* Header */
@@ -56,12 +57,14 @@
         header h1 {
             font-size: 3em;
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         header .subtitle {
             font-size: 1.3em;
             opacity: 0.9;
             margin-bottom: 20px;
+            font-weight: 400;
         }
 
         header .rating {
@@ -117,7 +120,6 @@
 
         /* Hero Section */
         .hero {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23f5f5f5" width="1200" height="400"/></svg>');
             background-color: #f5f5f5;
             padding: 60px 20px;
             text-align: center;
@@ -127,6 +129,12 @@
             font-size: 2.5em;
             color: #2c1810;
             margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #666;
         }
 
         /* Info Section */
@@ -155,6 +163,7 @@
             color: #d4a574;
             margin-bottom: 15px;
             font-size: 1.3em;
+            font-weight: 600;
         }
 
         .info-card p {
@@ -162,45 +171,10 @@
             line-height: 1.8;
         }
 
-        /* Contact Section */
-        .contact-section {
-            background: #2c1810;
-            color: white;
-            padding: 40px 20px;
-            margin-top: 50px;
-            border-radius: 8px;
-        }
-
-        .contact-section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2em;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .contact-item {
-            padding: 20px;
-        }
-
-        .contact-item h4 {
-            color: #d4a574;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-
-        .contact-item p {
-            opacity: 0.9;
-        }
-
         /* Menu Section */
         .menu-section {
             padding: 60px 20px;
+            background: white;
         }
 
         .menu-section h2 {
@@ -208,12 +182,14 @@
             font-size: 2.5em;
             color: #2c1810;
             margin-bottom: 40px;
+            font-weight: 700;
         }
 
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 50px;
         }
 
         .menu-item {
@@ -224,19 +200,34 @@
             transition: transform 0.3s;
         }
 
+        body.en .menu-item {
+            border-right: none;
+            border-left: 4px solid #d4a574;
+        }
+
         .menu-item:hover {
             transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .menu-item h4 {
             color: #2c1810;
             margin-bottom: 8px;
             font-size: 1.2em;
+            font-weight: 600;
         }
 
         .menu-item p {
             color: #666;
             font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .menu-item .price {
+            color: #d4a574;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 10px;
         }
 
         /* Reviews Section */
@@ -250,6 +241,7 @@
             font-size: 2.5em;
             color: #2c1810;
             margin-bottom: 40px;
+            font-weight: 700;
         }
 
         .reviews-grid {
@@ -270,6 +262,10 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
+        }
+
+        body.en .review-header {
+            flex-direction: row-reverse;
         }
 
         .reviewer-name {
@@ -293,6 +289,44 @@
             font-size: 0.95em;
         }
 
+        /* Contact Section */
+        .contact-section {
+            background: #2c1810;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-radius: 8px;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .contact-item {
+            padding: 20px;
+        }
+
+        .contact-item h4 {
+            color: #d4a574;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            opacity: 0.9;
+        }
+
         /* Footer */
         footer {
             background: #2c1810;
@@ -304,6 +338,7 @@
 
         footer p {
             opacity: 0.8;
+            margin: 5px 0;
         }
 
         /* Buttons */
@@ -337,6 +372,12 @@
         .cta-section h3 {
             font-size: 1.8em;
             margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
         }
 
         /* Responsive */
@@ -355,6 +396,10 @@
 
             nav a {
                 padding: 10px 15px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -399,7 +444,7 @@
         <section id="about">
             <div class="info-grid">
                 <div class="info-card">
-                    <h3 class="he-text">📍 ה位置שלנו</h3>
+                    <h3 class="he-text">📍 המיקום שלנו</h3>
                     <h3 class="en-text hidden">📍 Our Location</h3>
                     <p class="he-text">דרך אלנבי 43, חיפה</p>
                     <p class="en-text hidden">43 Allenby Street, Haifa</p>
@@ -407,7 +452,7 @@
                 <div class="info-card">
                     <h3 class="he-text">☎️ טלפון</h3>
                     <h3 class="en-text hidden">☎️ Phone</h3>
-                    <p dir="ltr"><a href="tel:+972485279928" style="color: #d4a574; text-decoration: none;">04-852-9928</a></p>
+                    <p dir="ltr"><a href="tel:+972485279928" style="color: #d4a574; text-decoration: none; font-weight: bold;">04-852-9928</a></p>
                 </div>
                 <div class="info-card">
                     <h3 class="he-text">💰 טווח מחירים</h3>
@@ -419,7 +464,7 @@
                     <h3 class="he-text">⏰ שעות פעילות</h3>
                     <h3 class="en-text hidden">⏰ Hours</h3>
                     <p class="he-text">ימי שישי: פתוח מ-8:00</p>
-                    <p class="en-text hidden">Friday: Opens at 8:00</p>
+                    <p class="en-text hidden">Friday: Opens at 8:00 AM</p>
                 </div>
                 <div class="info-card">
                     <h3 class="he-text">🍽️ אפשרויות הגשה</h3>
@@ -437,44 +482,50 @@
         </section>
 
         <section id="menu" class="menu-section">
-            <h2 class="he-text">תפריט</h2>
-            <h2 class="en-text hidden">Menu</h2>
+            <h2 class="he-text">תפריט מומלץ</h2>
+            <h2 class="en-text hidden">Featured Menu</h2>
             <div class="menu-grid">
                 <div class="menu-item">
                     <h4 class="he-text">🥘 חומוס גרגרים</h4>
                     <h4 class="en-text hidden">🥘 Hummus Chickpeas</h4>
                     <p class="he-text">חומוס טרי ואיכותי, אחד מהמנות הפופולריות ביותר שלנו</p>
                     <p class="en-text hidden">Fresh and high-quality hummus, one of our most popular dishes</p>
+                    <div class="price">₪ 32</div>
                 </div>
                 <div class="menu-item">
                     <h4 class="he-text">🍖 קבב ופרגית עם מג'דרה</h4>
                     <h4 class="en-text hidden">🍖 Kebab with Mujadera</h4>
-                    <p class="he-text">בשר טרי מעולה משווק עם ירקות ותבלינים מסורתיים</p>
+                    <p class="he-text">בשר טרי מעולה עם ירקות ותבלינים מסורתיים</p>
                     <p class="en-text hidden">Excellent fresh meat served with vegetables and traditional spices</p>
+                    <div class="price">₪ 58</div>
                 </div>
                 <div class="menu-item">
                     <h4 class="he-text">🍟 צ'יפס</h4>
                     <h4 class="en-text hidden">🍟 Chips</h4>
                     <p class="he-text">תפוחי אדמה צלויים מעולים, זהב אמיתי בצלחת</p>
                     <p class="en-text hidden">Perfectly fried potatoes, golden and delicious</p>
+                    <div class="price">₪ 22</div>
                 </div>
                 <div class="menu-item">
                     <h4 class="he-text">🥙 פאטייר</h4>
                     <h4 class="en-text hidden">🥙 Fatayer</h4>
-                    <p class="he-text">לחם ממולא בעגבניות, גבינה וירקות신</p>
+                    <p class="he-text">לחם ממולא בעגבניות, גבינה וירקות</p>
                     <p class="en-text hidden">Stuffed bread with tomatoes, cheese and vegetables</p>
+                    <div class="price">₪ 28</div>
                 </div>
                 <div class="menu-item">
                     <h4 class="he-text">🍲 מרק שעועית</h4>
                     <h4 class="en-text hidden">🍲 Bean Soup</h4>
                     <p class="he-text">מרק חם וטעים, מושלם לכל עונה</p>
                     <p class="en-text hidden">Warm and delicious soup, perfect for any season</p>
+                    <div class="price">₪ 24</div>
                 </div>
                 <div class="menu-item">
                     <h4 class="he-text">🍖 קובה בשר מטוגן</h4>
                     <h4 class="en-text hidden">🍖 Fried Meat Kuba</h4>
                     <p class="he-text">קובה מטוגנת בשר עם תבלינים ייחודיים</p>
                     <p class="en-text hidden">Fried meat kuba with unique spices</p>
+                    <div class="price">₪ 35</div>
                 </div>
             </div>
         </section>
@@ -492,7 +543,7 @@
                     </div>
                     <div class="review-date he-text">לפני 4 חודשים</div>
                     <div class="review-date en-text hidden">4 months ago</div>
-                    <p class="review-text he-text">לקחנו מרק שעועית, חומוס, פאטייר וקובה בשר מטוגן. הכל היה טעים בטירוף!!! החומוס מושלם!! באמת ארוחת בוקר מושלמת. נהנינו מאוד. החשבון יצא 71 שקל.</p>
+                    <p class="review-text he-text">לקחנו מרק שעועית, חומוס, פאטייר וקובה בשר מטוגן. הכל היה טעים בטירוף! החומוס מושלם! באמת ארוחת בוקר מושלמת. נהנינו מאוד.</p>
                     <p class="review-text en-text hidden">We ordered bean soup, hummus, fatayer and fried meat kuba. Everything was absolutely delicious! The hummus was perfect! A truly perfect breakfast. We enjoyed it very much.</p>
                 </div>
                 <div class="review-card">
@@ -502,7 +553,7 @@
                     </div>
                     <div class="review-date he-text">לפני 2 שנים</div>
                     <div class="review-date en-text hidden">2 years ago</div>
-                    <p class="review-text he-text">אכלנו שיפודי פרגית עם חומוס וסלטים. האוכל היה טעים וטרי. השרות היה מצויין עם יחס מאד טוב. חייב לציין שהחומוס מאד איכותי. הפרגיות מאד טובות.</p>
+                    <p class="review-text he-text">אכלנו שיפודי פרגית עם חומוס וסלטים. האוכל היה טעים וטרי. השרות היה מצויין עם יחס מאוד טוב. החומוס מאוד איכותי. הפרגיות מאוד טובות.</p>
                     <p class="review-text en-text hidden">We had skewers of chicken with hummus and salads. The food was delicious and fresh. The service was excellent with a very good attitude. The hummus is very high quality.</p>
                 </div>
                 <div class="review-card">
@@ -525,7 +576,6 @@
             <h3 class="en-text hidden">Visit Us Today!</h3>
             <p class="he-text">טעמו את טעמי המזרח התיכון האותנטיים</p>
             <p class="en-text hidden">Experience authentic Middle Eastern flavors</p>
-            <br>
             <a href="tel:+972485279928" class="btn he-text">התקשרו עכשיו</a>
             <a href="tel:+972485279928" class="btn en-text hidden">Call Now</a>
         </div>
@@ -545,7 +595,7 @@
                 <div class="contact-item">
                     <h4 class="he-text">☎️ טלפון</h4>
                     <h4 class="en-text hidden">☎️ Phone</h4>
-                    <p><a href="tel:+972485279928" style="color: #d4a574; text-decoration: none;">04-852-9928</a></p>
+                    <p><a href="tel:+972485279928" style="color: #d4a574; text-decoration: none; font-weight: bold;">04-852-9928</a></p>
                 </div>
                 <div class="contact-item">
                     <h4 class="he-text">🗺️ קוד מיקום</h4>
