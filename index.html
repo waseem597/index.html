@@ -28,7 +28,7 @@
         .language-toggle {
             position: fixed;
             top: 20px;
-            left: 20px;
+            right: 20px;
             z-index: 1000;
             background: #d4a574;
             border: none;
@@ -41,23 +41,43 @@
             font-size: 0.9em;
         }
 
+        body.en .language-toggle {
+            right: auto;
+            left: 20px;
+        }
+
         .language-toggle:hover {
             background: #c09464;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #2c1810 0%, #5d4e37 100%);
+            background: linear-gradient(135deg, #1a0f08 0%, #3d2817 50%, #2c1810 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(212, 165, 116, 0.1), transparent);
+            pointer-events: none;
         }
 
         header h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin-bottom: 10px;
             font-weight: 700;
+            position: relative;
+            z-index: 1;
         }
 
         header .subtitle {
@@ -65,29 +85,35 @@
             opacity: 0.9;
             margin-bottom: 20px;
             font-weight: 400;
+            position: relative;
+            z-index: 1;
         }
 
         header .rating {
             display: inline-block;
-            background: #d4a574;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1.1em;
+            background: rgba(212, 165, 116, 0.9);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
             margin-top: 10px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
         }
 
         .rating-stars {
             color: #ffd700;
+            font-size: 1.1em;
         }
 
         /* Navigation */
         nav {
-            background: #3d2817;
+            background: #2c1810;
             padding: 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         nav ul {
@@ -102,13 +128,14 @@
             color: white;
             padding: 15px 25px;
             text-decoration: none;
-            transition: background 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
+            border-bottom: 3px solid transparent;
         }
 
         nav a:hover {
             background: #d4a574;
-            color: white;
+            border-bottom-color: #ffd700;
         }
 
         /* Container */
@@ -120,147 +147,208 @@
 
         /* Hero Section */
         .hero {
-            background-color: #f5f5f5;
-            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 80px 20px;
             text-align: center;
         }
 
         .hero h2 {
-            font-size: 2.5em;
+            font-size: 2.8em;
             color: #2c1810;
             margin-bottom: 20px;
             font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: #666;
         }
 
         /* Info Section */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin: 50px 0;
+            margin: 60px 0;
         }
 
         .info-card {
             background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border-top: 4px solid #d4a574;
         }
 
         .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .info-card h3 {
-            color: #d4a574;
+            color: #2c1810;
             margin-bottom: 15px;
             font-size: 1.3em;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .info-card p {
             color: #666;
             line-height: 1.8;
+            font-size: 1.1em;
         }
 
         /* Menu Section */
         .menu-section {
-            padding: 60px 20px;
+            padding: 80px 20px;
             background: white;
         }
 
         .menu-section h2 {
             text-align: center;
-            font-size: 2.5em;
+            font-size: 2.8em;
             color: #2c1810;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             font-weight: 700;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .menu-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #d4a574;
+            border-radius: 2px;
+        }
+
+        .menu-category {
+            margin-bottom: 60px;
+        }
+
+        .menu-category h3 {
+            font-size: 1.8em;
+            color: #d4a574;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            font-weight: 700;
+        }
+
+        body.en .menu-category h3 {
+            text-align: left;
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .menu-item {
-            background: #f9f9f9;
+            background: #fafafa;
             padding: 25px;
             border-radius: 8px;
-            border-right: 4px solid #d4a574;
-            transition: transform 0.3s;
-        }
-
-        body.en .menu-item {
-            border-right: none;
+            transition: all 0.3s;
             border-left: 4px solid #d4a574;
         }
 
+        body.en .menu-item {
+            border-left: none;
+            border-right: 4px solid #d4a574;
+        }
+
         .menu-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            background: white;
         }
 
         .menu-item h4 {
             color: #2c1810;
             margin-bottom: 8px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 600;
         }
 
-        .menu-item p {
-            color: #666;
+        .menu-item .en-name {
+            color: #999;
             font-size: 0.95em;
-            line-height: 1.6;
+            font-weight: 500;
         }
 
-        .menu-item .price {
-            color: #d4a574;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-top: 10px;
+        .menu-item .he-name {
+            color: #999;
+            font-size: 0.95em;
+            font-weight: 500;
         }
 
         /* Reviews Section */
         .reviews-section {
-            background: #f5f5f5;
-            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #efefef 100%);
+            padding: 80px 20px;
         }
 
         .reviews-section h2 {
             text-align: center;
-            font-size: 2.5em;
+            font-size: 2.8em;
             color: #2c1810;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             font-weight: 700;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .reviews-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #d4a574;
+            border-radius: 2px;
+        }
+
+        .reviews-container {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            -webkit-overflow-scrolling: touch;
         }
 
         .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
             gap: 30px;
+            min-width: min-content;
         }
 
         .review-card {
             background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-width: 350px;
+            transition: all 0.3s;
+            border-top: 4px solid #d4a574;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .review-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 15px;
         }
 
@@ -269,46 +357,49 @@
         }
 
         .reviewer-name {
-            font-weight: bold;
+            font-weight: 700;
             color: #2c1810;
-        }
-
-        .review-date {
-            font-size: 0.9em;
-            color: #999;
+            font-size: 1.05em;
         }
 
         .review-rating {
             color: #ffd700;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            white-space: nowrap;
+        }
+
+        .review-date {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 10px;
         }
 
         .review-text {
             color: #666;
-            line-height: 1.6;
+            line-height: 1.7;
             font-size: 0.95em;
         }
 
         /* Contact Section */
         .contact-section {
-            background: #2c1810;
+            background: linear-gradient(135deg, #1a0f08 0%, #3d2817 50%, #2c1810 100%);
             color: white;
-            padding: 40px 20px;
-            margin-top: 50px;
-            border-radius: 8px;
+            padding: 60px 20px;
+            margin-top: 60px;
+            border-radius: 12px;
         }
 
         .contact-section h2 {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2em;
+            margin-bottom: 50px;
+            font-size: 2.5em;
             font-weight: 700;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 40px;
             text-align: center;
         }
 
@@ -318,72 +409,90 @@
 
         .contact-item h4 {
             color: #d4a574;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 700;
         }
 
         .contact-item p {
-            opacity: 0.9;
+            opacity: 0.95;
+            font-size: 1.1em;
         }
 
-        /* Footer */
-        footer {
-            background: #2c1810;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-        }
-
-        footer p {
-            opacity: 0.8;
-            margin: 5px 0;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            background: #d4a574;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
+        .contact-item a {
+            color: #d4a574;
             text-decoration: none;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: bold;
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
-        .btn:hover {
-            background: #c09464;
+        .contact-item a:hover {
+            color: #ffd700;
         }
 
+        /* CTA Section */
         .cta-section {
             text-align: center;
-            padding: 40px 20px;
-            background: #d4a574;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #d4a574 0%, #c09464 100%);
             color: white;
-            margin: 50px 0;
-            border-radius: 8px;
+            margin: 60px 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
         }
 
         .cta-section h3 {
-            font-size: 1.8em;
+            font-size: 2em;
             margin-bottom: 20px;
             font-weight: 700;
         }
 
         .cta-section p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #d4a574;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a0f08;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.85;
+            margin: 8px 0;
+            font-size: 0.95em;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2em;
+                font-size: 2.2em;
             }
 
             .hero h2 {
@@ -395,16 +504,51 @@
             }
 
             nav a {
-                padding: 10px 15px;
+                padding: 12px 15px;
             }
 
             .menu-grid {
                 grid-template-columns: 1fr;
             }
+
+            .reviews-grid {
+                flex-wrap: wrap;
+            }
+
+            .review-card {
+                min-width: 100%;
+            }
+
+            .cta-section h3 {
+                font-size: 1.5em;
+            }
+
+            .menu-item h4 {
+                font-size: 1em;
+            }
         }
 
         .hidden {
             display: none !important;
+        }
+
+        /* Scrollbar styling */
+        .reviews-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .reviews-container::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 10px;
+        }
+
+        .reviews-container::-webkit-scrollbar-thumb {
+            background: #d4a574;
+            border-radius: 10px;
+        }
+
+        .reviews-container::-webkit-scrollbar-thumb:hover {
+            background: #c09464;
         }
     </style>
 </head>
@@ -414,12 +558,10 @@
     <header>
         <h1 class="he-text">מסעדת אלנבי</h1>
         <h1 class="en-text hidden">Allenby Restaurant</h1>
-        <p class="subtitle he-text">מסעדה ישראלית אותנטית בחיפה</p>
-        <p class="subtitle en-text hidden">Authentic Israeli Restaurant in Haifa</p>
+        <p class="subtitle he-text">מסעדה מזרחית אותנטית בחיפה</p>
+        <p class="subtitle en-text hidden">Authentic Middle Eastern Restaurant in Haifa</p>
         <div class="rating">
             <span class="review-rating">★★★★☆ 4.2</span>
-            <p class="he-text">(743 ביקורות)</p>
-            <p class="en-text hidden">(743 reviews)</p>
         </div>
     </header>
 
@@ -436,35 +578,29 @@
     <section id="home" class="hero">
         <h2 class="he-text">ברוכים הבאים</h2>
         <h2 class="en-text hidden">Welcome</h2>
-        <p class="he-text">טעימו טעמי המזרח התיכון האותנטיים</p>
-        <p class="en-text hidden">Taste authentic Middle Eastern flavors</p>
+        <p class="he-text">טעימו את טעמי המזרח התיכון האותנטיים בחיפה</p>
+        <p class="en-text hidden">Experience authentic Middle Eastern flavors in Haifa</p>
     </section>
 
     <div class="container">
         <section id="about">
             <div class="info-grid">
                 <div class="info-card">
-                    <h3 class="he-text">📍 המיקום שלנו</h3>
-                    <h3 class="en-text hidden">📍 Our Location</h3>
+                    <h3 class="he-text">📍 הכתובת שלנו</h3>
+                    <h3 class="en-text hidden">📍 Our Address</h3>
                     <p class="he-text">דרך אלנבי 43, חיפה</p>
                     <p class="en-text hidden">43 Allenby Street, Haifa</p>
                 </div>
                 <div class="info-card">
                     <h3 class="he-text">☎️ טלפון</h3>
                     <h3 class="en-text hidden">☎️ Phone</h3>
-                    <p dir="ltr"><a href="tel:+972485279928" style="color: #d4a574; text-decoration: none; font-weight: bold;">04-852-9928</a></p>
+                    <p dir="ltr"><a href="tel:+972485279928" style="color: #d4a574; text-decoration: none; font-weight: bold; font-size: 1.2em;">04-852-9928</a></p>
                 </div>
                 <div class="info-card">
                     <h3 class="he-text">💰 טווח מחירים</h3>
                     <h3 class="en-text hidden">💰 Price Range</h3>
                     <p class="he-text">50–100 ₪ לאדם</p>
                     <p class="en-text hidden">50–100 ₪ per person</p>
-                </div>
-                <div class="info-card">
-                    <h3 class="he-text">⏰ שעות פעילות</h3>
-                    <h3 class="en-text hidden">⏰ Hours</h3>
-                    <p class="he-text">ימי שישי: פתוח מ-8:00</p>
-                    <p class="en-text hidden">Friday: Opens at 8:00 AM</p>
                 </div>
                 <div class="info-card">
                     <h3 class="he-text">🍽️ אפשרויות הגשה</h3>
@@ -475,57 +611,190 @@
                 <div class="info-card">
                     <h3 class="he-text">⭐ דירוג</h3>
                     <h3 class="en-text hidden">⭐ Rating</h3>
-                    <p class="he-text">4.2/5 כוכבים (743 ביקורות)</p>
-                    <p class="en-text hidden">4.2/5 stars (743 reviews)</p>
+                    <p class="he-text">4.2/5 כוכבים</p>
+                    <p class="en-text hidden">4.2/5 stars</p>
                 </div>
             </div>
         </section>
 
         <section id="menu" class="menu-section">
-            <h2 class="he-text">תפריט מומלץ</h2>
-            <h2 class="en-text hidden">Featured Menu</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <h4 class="he-text">🥘 חומוס גרגרים</h4>
-                    <h4 class="en-text hidden">🥘 Hummus Chickpeas</h4>
-                    <p class="he-text">חומוס טרי ואיכותי, אחד מהמנות הפופולריות ביותר שלנו</p>
-                    <p class="en-text hidden">Fresh and high-quality hummus, one of our most popular dishes</p>
-                    <div class="price">₪ 32</div>
+            <h2 class="he-text">תפריט</h2>
+            <h2 class="en-text hidden">Menu</h2>
+
+            <!-- Main Dishes -->
+            <div class="menu-category">
+                <h3 class="he-text">מנות עיקריות</h3>
+                <h3 class="en-text hidden">Main Dishes</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">קובה</h4><h4 class="en-text hidden">Kubbeh</h4></div>
+                    <div class="menu-item"><h4 class="he-text">קישואים ממולאים</h4><h4 class="en-text hidden">Stuffed Zucchini</h4></div>
+                    <div class="menu-item"><h4 class="he-text">עלי גפן</h4><h4 class="en-text hidden">Vine Leaves</h4></div>
+                    <div class="menu-item"><h4 class="he-text">מוסקה</h4><h4 class="en-text hidden">Moussaka</h4></div>
+                    <div class="menu-item"><h4 class="he-text">ממולאים</h4><h4 class="en-text hidden">Stuffed Meals</h4></div>
                 </div>
-                <div class="menu-item">
-                    <h4 class="he-text">🍖 קבב ופרגית עם מג'דרה</h4>
-                    <h4 class="en-text hidden">🍖 Kebab with Mujadera</h4>
-                    <p class="he-text">בשר טרי מעולה עם ירקות ותבלינים מסורתיים</p>
-                    <p class="en-text hidden">Excellent fresh meat served with vegetables and traditional spices</p>
-                    <div class="price">₪ 58</div>
+            </div>
+
+            <!-- Hummus Meals -->
+            <div class="menu-category">
+                <h3 class="he-text">מנות חומוס</h3>
+                <h3 class="en-text hidden">Hummus Meals</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">חומוס עם בשר מנה גדולה</h4><h4 class="en-text hidden">Hummus with Meat (Large)</h4></div>
+                    <div class="menu-item"><h4 class="he-text">חומוס עם בשר מנה קטנה</h4><h4 class="en-text hidden">Hummus with Meat (Small)</h4></div>
                 </div>
-                <div class="menu-item">
-                    <h4 class="he-text">🍟 צ'יפס</h4>
-                    <h4 class="en-text hidden">🍟 Chips</h4>
-                    <p class="he-text">תפוחי אדמה צלויים מעולים, זהב אמיתי בצלחת</p>
-                    <p class="en-text hidden">Perfectly fried potatoes, golden and delicious</p>
-                    <div class="price">₪ 22</div>
+            </div>
+
+            <!-- Grills & Skewers -->
+            <div class="menu-category">
+                <h3 class="he-text">גריל ושיפודים</h3>
+                <h3 class="en-text hidden">Grills & Skewers</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">קבב 4 שיפודים</h4><h4 class="en-text hidden">Kebab (4 Skewers)</h4></div>
+                    <div class="menu-item"><h4 class="he-text">קבב כבש 4 שיפודים</h4><h4 class="en-text hidden">Lamb Kebab (4 Skewers)</h4></div>
+                    <div class="menu-item"><h4 class="he-text">שיפודי שישליק כבש 2 שיפודים</h4><h4 class="en-text hidden">Lamb Shishlik (2 Skewers)</h4></div>
+                    <div class="menu-item"><h4 class="he-text">שיפודי שישליק 2 שיפודים</h4><h4 class="en-text hidden">Shishlik (2 Skewers)</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סינייה (עגבניה)</h4><h4 class="en-text hidden">Sinya (Tomato)</h4></div>
+                    <div class="menu-item"><h4 class="he-text">מעורב גריל</h4><h4 class="en-text hidden">Mix Grill</h4></div>
+                    <div class="menu-item"><h4 class="he-text">צלעות כבש</h4><h4 class="en-text hidden">Lamb Ribs</h4></div>
+                    <div class="menu-item"><h4 class="he-text">קבב</h4><h4 class="en-text hidden">Kebab</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סטייק פילה</h4><h4 class="en-text hidden">Steak Fillet</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סטייק עוף</h4><h4 class="en-text hidden">Chicken Steak</h4></div>
+                    <div class="menu-item"><h4 class="he-text">כבד עוף</h4><h4 class="en-text hidden">Chicken Liver</h4></div>
+                    <div class="menu-item"><h4 class="he-text">כבד עוף עם בצל</h4><h4 class="en-text hidden">Chicken Liver with Onion</h4></div>
+                    <div class="menu-item"><h4 class="he-text">שניצל עוף</h4><h4 class="en-text hidden">Chicken Schnitzel</h4></div>
+                    <div class="menu-item"><h4 class="he-text">שיפודי עוף בגריל</h4><h4 class="en-text hidden">Grilled Chicken Skewers</h4></div>
+                    <div class="menu-item"><h4 class="he-text">מעורב פרגית וקבב</h4><h4 class="en-text hidden">Mixed Chicken & Kebab</h4></div>
+                    <div class="menu-item"><h4 class="he-text">בשר מטוגן וטחינה</h4><h4 class="en-text hidden">Fried Meat with Tahini</h4></div>
                 </div>
-                <div class="menu-item">
-                    <h4 class="he-text">🥙 פאטייר</h4>
-                    <h4 class="en-text hidden">🥙 Fatayer</h4>
-                    <p class="he-text">לחם ממולא בעגבניות, גבינה וירקות</p>
-                    <p class="en-text hidden">Stuffed bread with tomatoes, cheese and vegetables</p>
-                    <div class="price">₪ 28</div>
+            </div>
+
+            <!-- Chicken Dishes -->
+            <div class="menu-category">
+                <h3 class="he-text">מנות עוף</h3>
+                <h3 class="en-text hidden">Chicken Dishes</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">עוף מחמר</h4><h4 class="en-text hidden">Mhammar Chicken</h4></div>
+                    <div class="menu-item"><h4 class="he-text">עוף בתנור</h4><h4 class="en-text hidden">Baked Chicken</h4></div>
+                    <div class="menu-item"><h4 class="he-text">עוף</h4><h4 class="en-text hidden">Chicken</h4></div>
+                    <div class="menu-item"><h4 class="he-text">רולדת עוף ממולאת</h4><h4 class="en-text hidden">Stuffed Chicken Roll</h4></div>
+                    <div class="menu-item"><h4 class="he-text">חזה עוף</h4><h4 class="en-text hidden">Chicken Breast</h4></div>
+                    <div class="menu-item"><h4 class="he-text">כבש עם אורז</h4><h4 class="en-text hidden">Lamb with Rice</h4></div>
+                    <div class="menu-item"><h4 class="he-text">מנות כבש</h4><h4 class="en-text hidden">Lamb Meals</h4></div>
                 </div>
-                <div class="menu-item">
-                    <h4 class="he-text">🍲 מרק שעועית</h4>
-                    <h4 class="en-text hidden">🍲 Bean Soup</h4>
-                    <p class="he-text">מרק חם וטעים, מושלם לכל עונה</p>
-                    <p class="en-text hidden">Warm and delicious soup, perfect for any season</p>
-                    <div class="price">₪ 24</div>
+            </div>
+
+            <!-- Kebab Dishes -->
+            <div class="menu-category">
+                <h3 class="he-text">מנות קבב</h3>
+                <h3 class="en-text hidden">Kebab Dishes</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">קבב לבנוני</h4><h4 class="en-text hidden">Lebanese Kebab</h4></div>
+                    <div class="menu-item"><h4 class="he-text">שיפודי פרגית</h4><h4 class="en-text hidden">Chicken Shishlik</h4></div>
+                    <div class="menu-item"><h4 class="he-text">מעורב וקבב</h4><h4 class="en-text hidden">Mix Grill & Kebab</h4></div>
+                    <div class="menu-item"><h4 class="he-text">שניצל</h4><h4 class="en-text hidden">Schnitzel</h4></div>
                 </div>
-                <div class="menu-item">
-                    <h4 class="he-text">🍖 קובה בשר מטוגן</h4>
-                    <h4 class="en-text hidden">🍖 Fried Meat Kuba</h4>
-                    <p class="he-text">קובה מטוגנת בשר עם תבלינים ייחודיים</p>
-                    <p class="en-text hidden">Fried meat kuba with unique spices</p>
-                    <div class="price">₪ 35</div>
+            </div>
+
+            <!-- Vegetarian Dishes -->
+            <div class="menu-category">
+                <h3 class="he-text">מנות צמחוניות</h3>
+                <h3 class="en-text hidden">Vegetarian Dishes</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">מג'דרה</h4><h4 class="en-text hidden">Mujadara (Rice with Lentils)</h4></div>
+                    <div class="menu-item"><h4 class="he-text">מנות צמחוניות</h4><h4 class="en-text hidden">Vegetarian Meals</h4></div>
+                    <div class="menu-item"><h4 class="he-text">שולבטו</h4><h4 class="en-text hidden">Shulbato</h4></div>
+                    <div class="menu-item"><h4 class="he-text">אורז</h4><h4 class="en-text hidden">Rice</h4></div>
+                    <div class="menu-item"><h4 class="he-text">מרק עדשים</h4><h4 class="en-text hidden">Lentil Soup</h4></div>
+                    <div class="menu-item"><h4 class="he-text">ממולאים צמחוניים (במיה)</h4><h4 class="en-text hidden">Vegetarian Stuffed Vegetables (Bamia)</h4></div>
+                </div>
+            </div>
+
+            <!-- Appetizers -->
+            <div class="menu-category">
+                <h3 class="he-text">מנות ראשונות</h3>
+                <h3 class="en-text hidden">Appetizers</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">חומוס</h4><h4 class="en-text hidden">Hummus</h4></div>
+                    <div class="menu-item"><h4 class="he-text">חומוס עם צנובר</h4><h4 class="en-text hidden">Hummus with Pine Nuts</h4></div>
+                    <div class="menu-item"><h4 class="he-text">חומוס עם טחינה</h4><h4 class="en-text hidden">Hummus with Tahini</h4></div>
+                    <div class="menu-item"><h4 class="he-text">חומוס עם פטריות</h4><h4 class="en-text hidden">Hummus with Mushrooms</h4></div>
+                    <div class="menu-item"><h4 class="he-text">חומוס ספיישל</h4><h4 class="en-text hidden">Special Hummus</h4></div>
+                    <div class="menu-item"><h4 class="he-text">חומוס עם גרגירי חומוס</h4><h4 class="en-text hidden">Hummus with Chickpeas</h4></div>
+                    <div class="menu-item"><h4 class="he-text">פול</h4><h4 class="en-text hidden">Ful (Fava Beans)</h4></div>
+                    <div class="menu-item"><h4 class="he-text">פול וחומוס</h4><h4 class="en-text hidden">Hummus & Ful</h4></div>
+                    <div class="menu-item"><h4 class="he-text">טחינה</h4><h4 class="en-text hidden">Tahini</h4></div>
+                    <div class="menu-item"><h4 class="he-text">חציל בטחינה (באבא גנוש)</h4><h4 class="en-text hidden">Eggplant with Tahini (Baba Ghanoush)</h4></div>
+                </div>
+            </div>
+
+            <!-- Breakfast -->
+            <div class="menu-category">
+                <h3 class="he-text">ארוחת בוקר</h3>
+                <h3 class="en-text hidden">Breakfast</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">ביצים וצ'יפס</h4><h4 class="en-text hidden">Eggs & Chips</h4></div>
+                    <div class="menu-item"><h4 class="he-text">חביתה</h4><h4 class="en-text hidden">Omelette</h4></div>
+                </div>
+            </div>
+
+            <!-- Salads -->
+            <div class="menu-category">
+                <h3 class="he-text">סלטים</h3>
+                <h3 class="en-text hidden">Salads</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">סלט טאבולה</h4><h4 class="en-text hidden">Tabbouleh Salad</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סלט ירקות</h4><h4 class="en-text hidden">Vegetable Salad</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סלט ערבי</h4><h4 class="en-text hidden">Arabic Salad</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סלט כרוב</h4><h4 class="en-text hidden">Cabbage Salad</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סלט טורקי</h4><h4 class="en-text hidden">Turkish Salad</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סלט קלוי</h4><h4 class="en-text hidden">Grilled Salad</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סלט חציל מטוגן</h4><h4 class="en-text hidden">Fried Eggplant Salad</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סלט פירות</h4><h4 class="en-text hidden">Fruit Salad</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סלט תירס</h4><h4 class="en-text hidden">Corn Salad</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סלט פתוש</h4><h4 class="en-text hidden">Fattoush Salad</h4></div>
+                </div>
+            </div>
+
+            <!-- Drinks -->
+            <div class="menu-category">
+                <h3 class="he-text">משקאות</h3>
+                <h3 class="en-text hidden">Drinks</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">קולה</h4><h4 class="en-text hidden">Cola</h4></div>
+                    <div class="menu-item"><h4 class="he-text">ספרייט</h4><h4 class="en-text hidden">Sprite</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סיידר</h4><h4 class="en-text hidden">Cider</h4></div>
+                    <div class="menu-item"><h4 class="he-text">פאנטה</h4><h4 class="en-text hidden">Fanta</h4></div>
+                    <div class="menu-item"><h4 class="he-text">מים מינרלים</h4><h4 class="en-text hidden">Mineral Water</h4></div>
+                    <div class="menu-item"><h4 class="he-text">סודה</h4><h4 class="en-text hidden">Soda Water</h4></div>
+                    <div class="menu-item"><h4 class="he-text">בירה מאלט</h4><h4 class="en-text hidden">Malt Beer</h4></div>
+                    <div class="menu-item"><h4 class="he-text">בירה גולדסטאר</h4><h4 class="en-text hidden">Goldstar Beer</h4></div>
+                    <div class="menu-item"><h4 class="he-text">בירה הייניקן</h4><h4 class="en-text hidden">Heineken Beer</h4></div>
+                    <div class="menu-item"><h4 class="he-text">בירה קרלסברג</h4><h4 class="en-text hidden">Carlsberg Beer</h4></div>
+                    <div class="menu-item"><h4 class="he-text">כוס וויסקי</h4><h4 class="en-text hidden">Whisky Glass</h4></div>
+                    <div class="menu-item"><h4 class="he-text">ערק</h4><h4 class="en-text hidden">Arak</h4></div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-category">
+                <h3 class="he-text">קינוחים</h3>
+                <h3 class="en-text hidden">Desserts</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">תה</h4><h4 class="en-text hidden">Tea</h4></div>
+                    <div class="menu-item"><h4 class="he-text">קפה</h4><h4 class="en-text hidden">Coffee</h4></div>
+                    <div class="menu-item"><h4 class="he-text">אבטיח</h4><h4 class="en-text hidden">Watermelon</h4></div>
+                    <div class="menu-item"><h4 class="he-text">בקלאווה</h4><h4 class="en-text hidden">Baklava</h4></div>
+                </div>
+            </div>
+
+            <!-- Family Meals -->
+            <div class="menu-category">
+                <h3 class="he-text">ארוחות משפחתיות</h3>
+                <h3 class="en-text hidden">Family Meals</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4 class="he-text">Meal XXL - 2 שיפודי פרגית ו־2 שיפודי קבב</h4><h4 class="en-text hidden">Meal XXL - 2 Chicken & 2 Kebab Skewers</h4></div>
+                    <div class="menu-item"><h4 class="he-text">Meal XXI - 2 שיפודי כבש ו־2 שיפודי קבב</h4><h4 class="en-text hidden">Meal XXI - 2 Lamb & 2 Kebab Skewers</h4></div>
+                    <div class="menu-item"><h4 class="he-text">Allenby's XXL Deal - 4 שיפודי פרגית ו־4 שיפודי קבב</h4><h4 class="en-text hidden">Allenby's XXL Deal - 4 Chicken & 4 Kebab Skewers</h4></div>
                 </div>
             </div>
         </section>
@@ -535,36 +804,128 @@
         <div class="container">
             <h2 class="he-text">מה הלקוחות שלנו אומרים</h2>
             <h2 class="en-text hidden">What Our Customers Say</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="reviewer-name">אביטל לסקין</span>
-                        <span class="review-rating">★★★★★</span>
+            <div class="reviews-container">
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">אביטל לסקין</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 4 חודשים</div>
+                        <div class="review-date en-text hidden">4 months ago</div>
+                        <p class="review-text he-text">לקחנו מרק שעועית, חומוס, פאטייר וקובה בשר מטוגן. הכל היה טעים בטירוף!!! החומוס מושלם!! באמת ארוחת בוקר מושלמת. נהנינו מאוד. החשבון יצא 71 שקל. בטוח שנחזור ונביא משפחה!</p>
+                        <p class="review-text en-text hidden">We ordered bean soup, hummus, fatayer and fried meat kuba. Everything was absolutely delicious! The hummus was perfect! A truly perfect breakfast experience. We enjoyed it very much.</p>
                     </div>
-                    <div class="review-date he-text">לפני 4 חודשים</div>
-                    <div class="review-date en-text hidden">4 months ago</div>
-                    <p class="review-text he-text">לקחנו מרק שעועית, חומוס, פאטייר וקובה בשר מטוגן. הכל היה טעים בטירוף! החומוס מושלם! באמת ארוחת בוקר מושלמת. נהנינו מאוד.</p>
-                    <p class="review-text en-text hidden">We ordered bean soup, hummus, fatayer and fried meat kuba. Everything was absolutely delicious! The hummus was perfect! A truly perfect breakfast. We enjoyed it very much.</p>
-                </div>
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="reviewer-name">AVIAD</span>
-                        <span class="review-rating">★★★★★</span>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">AVIAD</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 2 שנים</div>
+                        <div class="review-date en-text hidden">2 years ago</div>
+                        <p class="review-text he-text">אכלנו שיפודי פרגית עם חומוס וסלטים. האוכל היה טעים וטרי. השרות היה מצויין עם יחס מאוד טוב. החומוס מאוד איכותי. הפרגיות מאוד טובות.</p>
+                        <p class="review-text en-text hidden">We had chicken skewers with hummus and salads. The food was delicious and fresh. The service was excellent. The hummus is very high quality.</p>
                     </div>
-                    <div class="review-date he-text">לפני 2 שנים</div>
-                    <div class="review-date en-text hidden">2 years ago</div>
-                    <p class="review-text he-text">אכלנו שיפודי פרגית עם חומוס וסלטים. האוכל היה טעים וטרי. השרות היה מצויין עם יחס מאוד טוב. החומוס מאוד איכותי. הפרגיות מאוד טובות.</p>
-                    <p class="review-text en-text hidden">We had skewers of chicken with hummus and salads. The food was delicious and fresh. The service was excellent with a very good attitude. The hummus is very high quality.</p>
-                </div>
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="reviewer-name">M Z</span>
-                        <span class="review-rating">★★★★★</span>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">M Z</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 6 חודשים</div>
+                        <div class="review-date en-text hidden">6 months ago</div>
+                        <p class="review-text he-text">אם מצאתם חנייה באזור בואו לכאן. חומוס מעולה. מנה ענקית. צ'יפס מעולה. שירות אדיב ויעיל.</p>
+                        <p class="review-text en-text hidden">If you find parking nearby, come here. Excellent hummus. Giant portions. Excellent chips. Polite and efficient service.</p>
                     </div>
-                    <div class="review-date he-text">לפני 6 חודשים</div>
-                    <div class="review-date en-text hidden">6 months ago</div>
-                    <p class="review-text he-text">אם מצאתם חנייה באזור בואו לכאן. חומוס מעולה. מנה ענקית. צ'יפס מעולה. שירות אדיב ויעיל.</p>
-                    <p class="review-text en-text hidden">If you find parking in the area, come here. Excellent hummus. Giant portion. Excellent chips. Polite and efficient service.</p>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">N MM</span>
+                            <span class="review-rating">★★★★☆</span>
+                        </div>
+                        <div class="review-date he-text">לפני 8 חודשים</div>
+                        <div class="review-date en-text hidden">8 months ago</div>
+                        <p class="review-text he-text">מסעדה טובה עם אוכל טעים, יכולים להיות קצת יותר לארג'ים בסלטים, אחלה מקום בקיצור, יש מקום לשיפור.</p>
+                        <p class="review-text en-text hidden">Good restaurant with delicious food. Great place overall, there is room for improvement.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">Asaf Lotz</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 6 חודשים</div>
+                        <div class="review-date en-text hidden">6 months ago</div>
+                        <p class="review-text he-text">המסעדה המזרחית הכי טובה בצפון! המלצרים ממש נחמדים וחייכנים. בטוח שאחזור!</p>
+                        <p class="review-text en-text hidden">The best Middle Eastern restaurant in the north! Very nice and friendly staff. I'll definitely return!</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">Talia</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 9 חודשים</div>
+                        <div class="review-date en-text hidden">9 months ago</div>
+                        <p class="review-text he-text">ממש מקום מעולה, השירות, המחיר, האוכל, פשוט הכל. היינו 5 אנשים וויצאנו שבעים ומרוצים. ממש ממש ממליצה!</p>
+                        <p class="review-text en-text hidden">Absolutely excellent place! Service, price, food - everything is perfect. We were 5 people and left very satisfied. Highly recommend!</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">smadar ferrer</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 5 שנים</div>
+                        <div class="review-date en-text hidden">5 years ago</div>
+                        <p class="review-text he-text">חוויה נפלאה, שרות מעולה ומאיר פנים, אוכל טרי המוגש ביד רחבה. אין ספק שנחזור לכאן שוב ושוב.</p>
+                        <p class="review-text en-text hidden">Wonderful experience, excellent and friendly service, fresh food served generously. No doubt we'll return again and again.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">אלכסנדר נרודוביץ'</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 6 חודשים</div>
+                        <div class="review-date en-text hidden">6 months ago</div>
+                        <p class="review-text he-text">מסעדה אותנטית עם אווירה משפחתית, חומוס הכי טעים באזור.</p>
+                        <p class="review-text en-text hidden">Authentic restaurant with a family atmosphere. The best hummus in the area.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">Simon Mitry</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 8 חודשים</div>
+                        <div class="review-date en-text hidden">8 months ago</div>
+                        <p class="review-text he-text">שירות מדהים אוכל ברמה הכי גבוהה והכי חשוב מחירים הגיוניים.</p>
+                        <p class="review-text en-text hidden">Amazing service, highest quality food, and most importantly - reasonable prices.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">Jonathan Yogev</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 3 שנים</div>
+                        <div class="review-date en-text hidden">3 years ago</div>
+                        <p class="review-text he-text">אחלה של מסעדה! אוכל טעים מאוד. מחירים סבירים. שירות אדיב.</p>
+                        <p class="review-text en-text hidden">Excellent restaurant! Very tasty food. Reasonable prices. Polite service.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">Moshe Tal</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 7 חודשים</div>
+                        <div class="review-date en-text hidden">7 months ago</div>
+                        <p class="review-text he-text">חומוס מצויין, שיפודי פרגיות טעימים. שירות מהיר.</p>
+                        <p class="review-text en-text hidden">Excellent hummus, delicious chicken skewers. Fast service.</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="reviewer-name">מישל מבקר</span>
+                            <span class="review-rating">★★★★★</span>
+                        </div>
+                        <div class="review-date he-text">לפני 5 שנים</div>
+                        <div class="review-date en-text hidden">5 years ago</div>
+                        <p class="review-text he-text">מוסד ישראלי של שנים. מקום טעים אותנטי נקי. הבעלים הם אבא ושני ילדיו שעובדים בעסק יחד.</p>
+                        <p class="review-text en-text hidden">An established Israeli institution. Delicious, authentic, clean place. Owner and his two sons work together.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -595,20 +956,21 @@
                 <div class="contact-item">
                     <h4 class="he-text">☎️ טלפון</h4>
                     <h4 class="en-text hidden">☎️ Phone</h4>
-                    <p><a href="tel:+972485279928" style="color: #d4a574; text-decoration: none; font-weight: bold;">04-852-9928</a></p>
+                    <p><a href="tel:+972485279928">04-852-9928</a></p>
                 </div>
                 <div class="contact-item">
-                    <h4 class="he-text">🗺️ קוד מיקום</h4>
-                    <h4 class="en-text hidden">🗺️ Location Code</h4>
-                    <p>RX9V+G3 Haifa</p>
+                    <h4 class="he-text">🍽️ אפשרויות הגשה</h4>
+                    <h4 class="en-text hidden">🍽️ Service</h4>
+                    <p class="he-text">לאכול במקום • איסוף עצמי</p>
+                    <p class="en-text hidden">Dine-in • Takeaway</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p class="he-text">© 2024 מסעדת אלנבי. כל הזכויות שמורות.</p>
-        <p class="en-text hidden">© 2024 Allenby Restaurant. All rights reserved.</p>
+        <p class="he-text">© 2026 מסעדת אלנבי. כל הזכויות שמורות.</p>
+        <p class="en-text hidden">© 2026 Allenby Restaurant. All rights reserved.</p>
         <p class="he-text">לאכול במקום • איסוף עצמי</p>
         <p class="en-text hidden">Dine-in • Takeaway</p>
     </footer>
