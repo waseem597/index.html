@@ -8,6 +8,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&family=Rubik:wght@400;500;700&display=swap');
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -80,22 +84,36 @@
             border-radius: 50%;
         }
 
+        header .title-section {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+
         header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 4em;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
             font-weight: 900;
-            position: relative;
-            z-index: 1;
             letter-spacing: 2px;
             color: #f5e6d3;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
         }
 
+        header .restaurant-name-en {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f5e6d3;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            text-transform: capitalize;
+        }
+
         header .subtitle {
             font-size: 1.4em;
             opacity: 0.95;
-            margin-bottom: 30px;
+            margin-top: 25px;
             font-weight: 300;
             position: relative;
             z-index: 1;
@@ -106,20 +124,20 @@
         header .rating {
             display: inline-block;
             background: linear-gradient(135deg, #D4A574 0%, #C9945A 100%);
-            padding: 18px 35px;
+            padding: 22px 45px;
             border-radius: 50px;
-            font-size: 1.3em;
-            margin-top: 15px;
+            font-size: 1.6em;
+            margin-top: 25px;
             position: relative;
             z-index: 1;
             box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-weight: 900;
+            letter-spacing: 2px;
         }
 
         .rating-stars {
             color: #fff4e6;
-            font-size: 1.2em;
+            font-size: 1.3em;
         }
 
         /* Navigation */
@@ -537,6 +555,10 @@
                 font-size: 2.5em;
             }
 
+            header .restaurant-name-en {
+                font-size: 2.5em;
+            }
+
             .hero h2 {
                 font-size: 2em;
             }
@@ -571,6 +593,11 @@
             .contact-grid {
                 gap: 35px;
             }
+
+            .rating {
+                font-size: 1.2em !important;
+                padding: 16px 30px !important;
+            }
         }
 
         .hidden {
@@ -582,11 +609,12 @@
     <button class="language-toggle" onclick="toggleLanguage()">English</button>
 
     <header>
-        <h1 class="he-text">مطعم الموسى</h1>
-        <h1 class="he-text" style="font-size: 2.5em; margin-top: -30px;">מסעדת אלנבי</h1>
-        <h1 class="en-text hidden">Allenby Restaurant</h1>
-        <p class="subtitle he-text">חוקו המזרח התיכון בעומק רחוב אלנבי</p>
-        <p class="subtitle en-text hidden">Taste of Middle East on Allenby Street</p>
+        <div class="title-section">
+            <h1 class="he-text">מסעדת אלנבי</h1>
+            <div class="restaurant-name-en en-text hidden">alenbi restaurant</div>
+        </div>
+        <p class="subtitle he-text">מסעדת אוכל מזרחי</p>
+        <p class="subtitle en-text hidden">Middle Eastern Food Restaurant</p>
         <div class="rating">
             <span class="review-rating">★★★★☆ 4.2</span>
         </div>
